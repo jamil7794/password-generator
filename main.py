@@ -3,6 +3,20 @@ from tkinter import *
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
+def save():
+
+    if email_Entry.get() != "":
+        print(email_Entry.get())
+    
+    if website_Entry.get() != "":
+        print(website_Entry.get())
+
+    if password_Entry.get() != "":
+        print(password_Entry.get())
+
+    with open("savedPass.txt","a+") as file:
+        file.write(f"Website: {website_Entry.get()} | Email: {email_Entry.get()} | Password: {password_Entry.get()}\n")
+
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Password Manager")
@@ -37,11 +51,8 @@ password_Entry.grid(row=3, column=1)
 
 generatePassButton = Button(text="Generate Password")
 generatePassButton.grid(row=3, column=2, columnspan=2)
-addButton = Button(text="Add",width=35)
+addButton = Button(text="Add",width=35, command=save)
 addButton.grid(row=4, column=1, columnspan=2)
-
-def save():
-    pass
   
 
 window.mainloop()
